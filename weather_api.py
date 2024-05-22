@@ -19,7 +19,7 @@ async def get_weather(city: str):
     else:
         raise HTTPException(status_code=response.status_code, detail="Weather data not found")
     
-@app.get('/')
+@app.get('/test')
 def about():
     return {'test weather'}
 
