@@ -11,7 +11,7 @@ WEATHER_API_KEY = "b47bea4061204898ae3111653241305"
 @app.get("/weather/{city}")
 async def get_weather(city: str):
     print('in line 13')
-    url = f"{WEATHER_API_BASE_URL}/current.json?key={WEATHER_API_KEY}&q={city}&days=1"
+    url = f"{WEATHER_API_BASE_URL}/current.json?key={WEATHER_API_KEY}&q={city}&days=2"
     print('url:',url)
     response = requests.get(url)
     if response.status_code == 200:
@@ -19,12 +19,12 @@ async def get_weather(city: str):
     else:
         raise HTTPException(status_code=response.status_code, detail="Weather data not found")
     
-@app.get('/test')
+@app.get('/weather_api/about')
 def about():
-    return {'test weather'}
+    return {'this is a simple weather app , created by /n Abhijith Venu'}
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="localhost", port=1234)
+    uvicorn.run(app, host="localhost", port=8555)
 
 # 'http://api.weatherapi.com/v1/current.json?key=b47bea4061204898ae3111653241305&q=London&aqi=no'
